@@ -1,7 +1,14 @@
+import Navbar from "../components/NavBar";
+import PixelatedImage from "../components/PixelatedImage";
+
 function App() {
   return (
     <>
-      <h1 className="text-red-600">Texte en rouge</h1>
+      <Navbar />
+      <PixelatedImage
+        src="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Aatrox_0.jpg"
+        pixelSize={100}
+      />
     </>
   );
 }
