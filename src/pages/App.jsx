@@ -6,8 +6,8 @@ function App() {
     <>
       <Navbar />
       <PixelatedImage
-        src="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/MasterYi_0.jpg"
-        pixelSize={100}
+        src="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Aatrox_0.jpg"
+        pixelSize={20}
       />
     </>
   );
