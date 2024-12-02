@@ -15,6 +15,10 @@ export default {
         "dark-title": "#dfdfd6",
         "dark-subtitle": "#98989f",
       },
+      fontFamily: {
+        Inter: ["Inter", "sans-serif"],
+        Montserrat: ["Montserrat", "sans-serif"],
+      },
     },
   },
   plugins: [],

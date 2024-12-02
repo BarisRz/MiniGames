@@ -48,7 +48,7 @@ const PixelatedImage = ({ src, pixelSize = 1 }) => {
     img.src = src;
   }, [src, pixelSize]);
 
-  return <canvas ref={canvasRef} />;
+  return <canvas ref={canvasRef} className="rounded-b-[50px]" />;
 };
 
 export default PixelatedImage;
