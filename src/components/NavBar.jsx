@@ -1,9 +1,10 @@
-import React from "react";
+import { useState } from "react";
 import ThemeToggle from "./ThemeToggle";
 import { Github, Linkedin, Menu, X } from "lucide-react";
 import { Link } from "react-router-dom";
 
 function Navbar() {
+  const [menuModal, setMenuModal] = useState(true);
   return (
     <nav className="h-16 bg-primary border-b border-secondary-accent p-3 dark:bg-dark-primary dark:border-black">
       <div className="max-w-[1440px] flex justify-between items-center m-auto">
@@ -39,6 +40,13 @@ function Navbar() {
           <Link to={"/propos"} className="nav-text-link">
             À Propos
           </Link>
+          <button onClick={} className="nav-icon min-[601px]:hidden">
+            {menuModal ? (
+              <Menu size={24} strokeWidth={1} />
+            ) : (
+              <X size={24} strokeWidth={1} />
+            )}
+          </button>
 
           <div className="nav-splitter" />
           <div className="flex space-x-1 items-center">

@@ -22,7 +22,7 @@
     @apply dark:hover:bg-black dark:bg-dark-primary dark:border-black dark:text-dark-title dark:hover:border-accent;
   }
   .nav-text-link {
-    @apply text-subtitle  hover:text-accent font-semibold text-sm transition-colors;
+    @apply text-subtitle  hover:text-accent font-semibold text-sm transition-colors max-[600px]:hidden;
     @apply dark:text-dark-title dark:hover:text-accent;
   }
   .nav-splitter {

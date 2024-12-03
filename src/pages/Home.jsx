@@ -9,7 +9,7 @@ function Home() {
         }
         title={"League Artwork Blindtest"}
         imagePosition={"right -170px"}
-        pagelink={"/game1"}
+        pagelink={"/game1/menu"}
       />
       <GameCard title={"Coming soon..."} />
       <GameCard title={"Coming soon..."} />
