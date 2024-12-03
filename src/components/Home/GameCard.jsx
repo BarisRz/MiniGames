@@ -1,6 +1,9 @@
-function GameCard({ src, title, imagePosition }) {
+import { Link } from "react-router-dom";
+
+function GameCard({ src, title, imagePosition, pagelink }) {
   return (
-    <div
+    <Link
+      to={pagelink}
       className="game-card"
       style={{
         backgroundImage: `url(${src})`,
@@ -12,7 +15,7 @@ function GameCard({ src, title, imagePosition }) {
           {title}
         </p>
       </div>
-    </div>
+    </Link>
   );
 }
 
