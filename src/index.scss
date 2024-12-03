@@ -10,17 +10,23 @@
   body {
     @apply m-0 font-Inter;
   }
+  body {
+    @apply bg-white dark:bg-dark-primary;
+  }
 }
 
 @layer components {
   // Navbar
   .nav-icon {
-    @apply w-10 h-10 border border-secondary-accent flex text-title justify-center items-center rounded-md hover:bg-secondary transition-colors hover:border-accent;
+    @apply w-10 h-10 border border-secondary-accent flex text-title justify-center items-center rounded-md hover:bg-secondary  transition-colors hover:border-accent hover:shadow-lg;
+    @apply dark:hover:bg-dark-subtitle dark:bg-dark-primary dark:border-black dark:text-dark-title;
   }
   .nav-text-link {
-    @apply text-subtitle hover:text-accent font-semibold;
+    @apply text-subtitle  hover:text-accent font-semibold text-sm transition-colors;
+    @apply dark:text-dark-subtitle dark:hover:text-accent;
   }
   .nav-splitter {
     @apply h-8 w-px bg-secondary-accent max-[600px]:hidden;
+    @apply dark:bg-black;
   }
 }
