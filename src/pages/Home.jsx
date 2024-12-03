@@ -12,10 +12,10 @@ function Home() {
         title={"League Artwork Blindtest"}
         imagePosition={"right -170px"}
         link1={"/game1/infinite"}
-        text1={"Infinite"}
+        text1={"Infini"}
       />
-      <GameCard title={"Coming soon..."} />
-      <GameCard title={"Coming soon..."} />
+      <GameCard title={"Pas encore dispo..."} text1={"En chantier 🏗️"} />
+      <GameCard title={"Pas encore dispo..."} text1={"En chantier 🏗️"} />
     </div>
   );
 }
