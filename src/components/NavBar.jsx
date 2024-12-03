@@ -40,7 +40,10 @@ function Navbar() {
           <Link to={"/propos"} className="nav-text-link">
             À Propos
           </Link>
-          <button onClick={} className="nav-icon min-[601px]:hidden">
+          <button
+            onClick={() => setMenuModal(!menuModal)}
+            className="nav-icon min-[601px]:hidden"
+          >
             {menuModal ? (
               <Menu size={24} strokeWidth={1} />
             ) : (
