@@ -1,5 +1,4 @@
-import React from "react";
-import PixelatedImage from "../components/Game1/PixelatedImage";
+import { Link } from "react-router-dom";
 import { useChampion } from "../contexts/ChampionsContext";
 
 function Game1() {
@@ -7,10 +6,14 @@ function Game1() {
   console.log(championList);
   console.log(typeof championList);
   return (
-    <PixelatedImage
-      src="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Aatrox_0.jpg"
-      pixelSize={10}
-    />
+    <div className="flex flex-col space-y-2 items-center mt-6">
+      <Link to={"/game1/infinite"} className="game1-selection-btn">
+        Infini
+      </Link>
+      <Link to={"/game1/infinite"} className="game1-selection-btn">
+        Normal
+      </Link>
+    </div>
   );
 }
 
