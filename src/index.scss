@@ -29,6 +29,10 @@
     @apply h-8 w-px bg-secondary-accent max-[600px]:hidden;
     @apply dark:bg-black;
   }
+  .nav-link-mobile {
+    @apply p-1 px-3 text-subtitle font-semibold text-sm bg-secondary border border-secondary-accent;
+    @apply dark:bg-dark-secondary dark:border-dark-secondary2 text-dark-subtitle;
+  }
 
   // Home
 
