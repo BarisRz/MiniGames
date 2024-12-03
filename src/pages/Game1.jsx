@@ -8,7 +8,7 @@ function Game1() {
   return (
     <PixelatedImage
       src="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Aatrox_0.jpg"
-      pixelSize={20}
+      pixelSize={10}
     />
   );
 }
