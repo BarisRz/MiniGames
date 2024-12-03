@@ -45,7 +45,7 @@ function GameCard({
               {text3}
             </Link>
           )}
-          <button className="bg-accent text-4xl font-bold w-80 h-16 flex items-center justify-center rounded-lg border border-secondary hover:border-accent max-[600px]:w-48 max-[600px]:h-12 max-[600px]:text-xl transition-colors dark:bg-accent dark:border-dark-secondary2 dark:text-dark-title dark:hover:border-accent">
+          <button className="bg-accent text-4xl font-bold w-80 h-16 flex items-center justify-center rounded-lg border border-accent hover:border-blue-950 hover:bg-blue-950 max-[600px]:w-48 max-[600px]:h-12 max-[600px]:text-xl transition-colors dark:bg-accent dark:border-dark-secondary2 dark:text-dark-title dark:hover:border-blue-950 dark:hover:bg-blue-950">
             Close
           </button>
         </div>
