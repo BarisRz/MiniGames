@@ -36,7 +36,7 @@
 
   // Game1
   .game1-selection-btn {
-    @apply bg-secondary text-4xl font-bold w-80 h-16 flex items-center justify-center rounded-lg border border-secondary hover:border-accent max-[600px]:w-48 max-[600px]:h-12 max-[600px]:text-xl transition-colors;
-    @apply dark:bg-dark-secondary dark:border-dark-secondary2 dark:text-dark-title dark:hover:border-accent;
+    @apply bg-secondary hover:bg-primary text-title text-4xl font-bold w-80 h-16 flex items-center justify-center rounded-lg border border-secondary hover:border-accent max-[600px]:w-48 max-[600px]:h-12 max-[600px]:text-xl transition-colors;
+    @apply dark:bg-dark-secondary dark:border-dark-secondary2 dark:text-dark-title dark:hover:border-accent dark:hover:bg-dark-primary;
   }
 }
