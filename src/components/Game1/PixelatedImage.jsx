@@ -50,7 +50,7 @@ const PixelatedImage = ({ src, width = 100, length, pixel }) => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setPixelSize((prevPixelSize) => Math.max(prevPixelSize - pixel / 4, 1));
+      setPixelSize((prevPixelSize) => Math.max(prevPixelSize - pixel / 5, 1));
     }, 3000);
 
     return () => clearInterval(interval);
