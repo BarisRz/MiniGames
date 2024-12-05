@@ -1,8 +1,9 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
-const PixelatedImage = ({ src, pixelSize = 1, width = 100, length }) => {
+const PixelatedImage = ({ src, width = 100, length, pixel }) => {
   const canvasRef = useRef(null);
   const imgRef = useRef(new Image());
+  const [pixelSize, setPixelSize] = useState(pixel);
 
   useEffect(() => {
     const img = imgRef.current;
@@ -13,11 +14,9 @@ const PixelatedImage = ({ src, pixelSize = 1, width = 100, length }) => {
       const originalWidth = img.width;
       const originalHeight = img.height;
 
-      // Dimensionner le canvas selon l'image originale
       canvas.width = originalWidth;
       canvas.height = originalHeight;
 
-      // Réduction de l'image à une taille plus petite
       const scaledWidth = Math.ceil(originalWidth / pixelSize);
       const scaledHeight = Math.ceil(originalHeight / pixelSize);
 
@@ -26,11 +25,9 @@ const PixelatedImage = ({ src, pixelSize = 1, width = 100, length }) => {
       tempCanvas.height = scaledHeight;
       const tempCtx = tempCanvas.getContext("2d");
 
-      // Dessiner l'image dans le canvas temporaire (petite échelle)
       tempCtx.drawImage(img, 0, 0, scaledWidth, scaledHeight);
 
-      // Dessiner l'image mise à l'échelle sur le canvas principal
-      ctx.imageSmoothingEnabled = false; // Désactive le lissage
+      ctx.imageSmoothingEnabled = false;
       ctx.drawImage(
         tempCanvas,
         0,
@@ -44,9 +41,20 @@ const PixelatedImage = ({ src, pixelSize = 1, width = 100, length }) => {
       );
     };
 
-    // Charger l'image
     img.src = src;
   }, [src, pixelSize]);
+
+  useEffect(() => {
+    setPixelSize(pixel); // Reset pixel size when src changes
+  }, [src, pixel]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setPixelSize((prevPixelSize) => Math.max(prevPixelSize - 25, 1));
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [src]);
 
   return (
     <div>
@@ -56,7 +64,7 @@ const PixelatedImage = ({ src, pixelSize = 1, width = 100, length }) => {
           style={{ width: `${width}%` }}
         >
           <p className="text-3xl font-bold text-black dark:text-dark-title m-10">
-            {length} {length == 1 ? "restant" : "restants"}
+            {length} {length === 1 ? "restant" : "restants"}
           </p>
         </div>
       </div>
