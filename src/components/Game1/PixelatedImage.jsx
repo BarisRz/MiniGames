@@ -48,7 +48,21 @@ const PixelatedImage = ({ src, pixelSize = 1 }) => {
     img.src = src;
   }, [src, pixelSize]);
 
-  return <canvas ref={canvasRef} className="rounded-b-[50px]" />;
+  return (
+    <div className="w-screen max-w-[1000px] max-[500px]:w-[300px]">
+      <div className="w-full bg-secondary-accent dark:bg-dark-secondary2 h-20 rounded-tr-[50px]">
+        <div
+          className="bg-accent h-20 flex items-center rounded-tr-[50px]"
+          style={{ width: "5%" }}
+        >
+          <p className="text-3xl font-bold text-black dark:text-dark-title m-10">
+            Test
+          </p>
+        </div>
+      </div>
+      <canvas ref={canvasRef} className="rounded-b-[50px] w-full" />
+    </div>
+  );
 };
 
 export default PixelatedImage;

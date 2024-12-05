@@ -40,3 +40,38 @@
     @apply dark:bg-dark-secondary dark:border-dark-secondary2 dark:text-dark-title dark:hover:border-accent dark:hover:bg-dark-primary;
   }
 }
+
+// Scrollbar
+
+/* Pour les navigateurs WebKit */
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* Pour Firefox */
+html {
+  scrollbar-width: none;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: black;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(0, 0, 0);
+}
+
+/* Pour Firefox */
+html {
+  scrollbar-width: auto;
+  scrollbar-color: rgb(155, 155, 155) rgb(70, 69, 69);
+}
+
+body {
+  overflow-y: scroll; /* Pour rendre l'élément défilable */
+  -webkit-overflow-scrolling: auto; /* Pour rendre la barre de défilement flottante sur les appareils tactiles */
+}
