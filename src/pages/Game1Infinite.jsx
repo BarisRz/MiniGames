@@ -1,8 +1,48 @@
+import Fuse from "fuse.js";
+import { useState } from "react";
 import { useChampion } from "../contexts/ChampionsContext";
 
 export default function Game1Infinite() {
   const { championList } = useChampion();
-  console.log(championList);
-  console.log(typeof championList);
-  return <div>Game1Infinite</div>;
+  const [search, setSearch] = useState("");
+  const fuseOptions = {
+    minMatchCharLength: 1,
+    includeMatches: true,
+    keys: ["id", "name"],
+    threshold: 0.1, // Ajustez cette valeur pour des correspondances plus strictes
+    distance: 100, // Ajustez cette valeur pour des correspondances plus strictes
+    useExtendedSearch: true, // Utilise une recherche étendue pour des correspondances plus précises
+  };
+  const fuse = new Fuse(championList, fuseOptions);
+  console.log(fuse.search(search));
+  return (
+    <div>
+      <p className="dark:text-dark-title">Test barre de recherche :</p>
+      <input
+        type="search"
+        className="dark:bg-dark-primary dark:text-dark-title p-2 border-accent border rounded-lg"
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+      />
+      <div>
+        {fuse.search(search, { limit: 10 }).map((element) => (
+          <div key={element.item.id} className="text-dark-title p-2">
+            <button
+              className="flex items-center space-x-2"
+              type="button"
+              onClick={() => setSearch(element.item.name)}
+            >
+              <img
+                src={`https://ddragon.leagueoflegends.com/cdn/14.23.1/img/champion/${element.item.id}.png`}
+                className="h-10 w-10"
+              />
+              <p className="dark:text-dark-title text-title">
+                {element.item.name}
+              </p>
+            </button>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 }

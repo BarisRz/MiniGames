@@ -14,7 +14,7 @@ function GameCard({
 }) {
   const [modal, setModal] = useState(false);
   return (
-    <button
+    <div
       className="h-24 rounded-xl flex items-center bg-right bg-no-repeat"
       style={{
         backgroundImage: `url(${src})`,
@@ -50,7 +50,7 @@ function GameCard({
           </button>
         </div>
       )}
-    </button>
+    </div>
   );
 }
 
