@@ -26,21 +26,21 @@ export default function Game1Infinite() {
         />
         <input
           type="search"
-          className="w-full bg-secondary-accent h-20 rounded-3xl text-title dark:text-dark-title dark:bg-dark-secondary2 px-8 dark:placeholder-dark-subtitle/50 placeholder-subtitle/70 focus:outline-none focus:ring-2 focus:ring-accent transition-colors text-xl placeholder:text-base mt-8"
+          className="w-full mb-2 bg-secondary-accent h-20 rounded-3xl text-title dark:text-dark-title dark:bg-dark-secondary2 px-8 dark:placeholder-dark-subtitle/50 placeholder-subtitle/70 focus:outline-none focus:ring-2 focus:ring-accent transition-colors text-xl placeholder:text-base mt-8"
           placeholder="Quel est ce champion?"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
-        {fuse?.search(search, { limit: 20 }).map((element) => (
-          <div key={element.item.id} className="text-dark-title p-2 w-full">
+        {fuse?.search(search, { limit: 10 }).map((element) => (
+          <div key={element.item.id} className="text-dark-title py-1 w-full">
             <button
-              className="flex items-center space-x-2"
+              className="flex items-center space-x-2 bg-secondary dark:bg-dark-secondary2 w-full rounded-r-2xl border border-secondary dark:border-dark-secondary2 hover:border-accent dark:hover:border-accent hover:bg-secondary-accent dark:hover:bg-dark-secondary transition-colors"
               type="button"
               onClick={() => setSearch(element.item.name)}
             >
               <img
                 src={`https://ddragon.leagueoflegends.com/cdn/14.23.1/img/champion/${element.item.id}.png`}
-                className="h-10 w-10 rounded-full"
+                className="h-10 w-10"
               />
               <p className="dark:text-dark-title text-title">
                 {element.item.name}

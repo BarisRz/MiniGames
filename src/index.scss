@@ -19,7 +19,7 @@
   // Navbar
   .nav-icon {
     @apply w-10 h-10 border border-secondary-accent flex text-title justify-center items-center rounded-md hover:bg-secondary  transition-colors hover:border-accent hover:shadow-lg;
-    @apply dark:hover:bg-black dark:bg-dark-primary dark:border-black dark:text-dark-title dark:hover:border-accent;
+    @apply dark:hover:bg-dark-subtitle/20 dark:bg-dark-primary dark:border-black dark:text-dark-title dark:hover:border-accent;
   }
   .nav-text-link {
     @apply text-subtitle  hover:text-accent font-semibold text-sm transition-colors max-[600px]:hidden;
@@ -68,7 +68,7 @@ html {
 /* Pour Firefox */
 html {
   scrollbar-width: auto;
-  scrollbar-color: rgb(155, 155, 155) rgb(70, 69, 69);
+  scrollbar-color: rgb(223, 223, 214) rgb(27, 27, 31);
 }
 
 body {
