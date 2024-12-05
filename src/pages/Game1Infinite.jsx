@@ -14,7 +14,13 @@ export default function Game1Infinite() {
     useExtendedSearch: true,
   };
   const fuse = championList && new Fuse(championList, fuseOptions);
-  console.log(fuse?.search(search));
+  const researchFuse = fuse?.search(search, { limit: 10 });
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      setSearch(researchFuse[0].item.name);
+    }
+  };
+
   return (
     <>
       <div className="flex items-center mt-4 flex-col w-screen max-w-[1000px] max-[500px]:w-[300px] m-auto">
@@ -30,8 +36,9 @@ export default function Game1Infinite() {
           placeholder="Quel est ce champion?"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
+          onKeyDown={handleKeyDown}
         />
-        {fuse?.search(search, { limit: 10 }).map((element) => (
+        {researchFuse?.map((element) => (
           <div key={element.item.id} className="text-dark-title py-1 w-full">
             <button
               className="flex items-center space-x-2 bg-secondary dark:bg-dark-secondary2 w-full rounded-r-2xl border border-secondary dark:border-dark-secondary2 hover:border-accent dark:hover:border-accent hover:bg-secondary-accent dark:hover:bg-dark-secondary transition-colors"
