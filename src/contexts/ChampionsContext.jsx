@@ -12,7 +12,8 @@ export function ChampionsProvider({ children }) {
     )
       .then((response) => response.json())
       .then((element) => {
-        setChampionList(Object.values(element.data));
+        const championsArray = Object.values(element.data);
+        setChampionList(championsArray.slice(0, element.data.length));
       });
   }, []);
 
