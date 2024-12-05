@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 
-const PixelatedImage = ({ src, pixelSize = 1, width = 100 }) => {
+const PixelatedImage = ({ src, pixelSize = 1, width = 100, length }) => {
   const canvasRef = useRef(null);
   const imgRef = useRef(new Image());
 
@@ -49,14 +49,14 @@ const PixelatedImage = ({ src, pixelSize = 1, width = 100 }) => {
   }, [src, pixelSize]);
 
   return (
-    <div className="w-screen max-w-[1000px] max-[500px]:w-[300px]">
+    <div>
       <div className="w-full bg-secondary-accent dark:bg-dark-secondary2 h-20 rounded-tr-[50px]">
         <div
           className="bg-accent h-20 flex items-center rounded-tr-[50px]"
           style={{ width: `${width}%` }}
         >
           <p className="text-3xl font-bold text-black dark:text-dark-title m-10">
-            Test
+            {length} {length == 1 ? "restant" : "restants"}
           </p>
         </div>
       </div>
