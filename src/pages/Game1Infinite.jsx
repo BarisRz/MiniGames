@@ -76,7 +76,7 @@ export default function Game1Infinite() {
         <PixelatedImage
           src={`https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${championList[chosenChampion].id}_0.jpg`}
           length={championList.length}
-          pixel={100}
+          pixel={150}
         />
       )}
 
