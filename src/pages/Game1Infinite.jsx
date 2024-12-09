@@ -10,6 +10,7 @@ export default function Game1Infinite() {
   const { championList, setChampionList } = useChampion();
   const [search, setSearch] = useState("");
   const [chosenChampion, setChosenChampion] = useState(0);
+  const [isImageClear, setIsImageClear] = useState(false);
 
   // Change le champion choisi à chaque mise à jour de la liste
   useEffect(() => {
@@ -66,6 +67,7 @@ export default function Game1Infinite() {
     threshold: 0.1,
     useExtendedSearch: true,
   };
+
   const fuse = new Fuse(championList, fuseOptions);
   const searchResults = search ? fuse.search(search, { limit: 10 }) : [];
 
