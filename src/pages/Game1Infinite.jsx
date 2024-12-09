@@ -19,16 +19,19 @@ export default function Game1Infinite() {
   }, [championList]);
 
   // Gestion de l'appui sur Entrée
-  const handleKeyDown = (event) => {
-    if (event.key === "Enter") {
-      if (isCorrectAnswer(championList, chosenChampion, search)) {
-        setIsImageClear(true); // Rendre l'image actuelle nette
+  const handleKeyDown = (event, suggestion = null) => {
+    // Si une suggestion est fournie, utilise son texte, sinon la recherche actuelle
+    const answer = suggestion || search;
+
+    // Gère uniquement "Entrée" ou un clic direct via suggestion
+    if (event.key === "Enter" || suggestion) {
+      if (isCorrectAnswer(championList, chosenChampion, answer)) {
+        setIsImageClear(true); // Rendre l'image nette
 
         const updatedList = championList.filter(
           (champion) => champion.name !== championList[chosenChampion].name
         );
 
-        // Gérer le délai avant de changer le champion
         setTimeout(() => {
           setChampionList(updatedList); // Mettre à jour la liste après le délai
           setIsImageClear(false); // Revenir au flou
@@ -102,10 +105,7 @@ export default function Game1Infinite() {
           <button
             className="flex items-center space-x-2 bg-secondary dark:bg-dark-secondary2 w-full rounded-r-2xl border border-secondary dark:border-dark-secondary2 hover:border-accent dark:hover:border-accent hover:bg-secondary-accent dark:hover:bg-dark-secondary transition-colors"
             type="button"
-            onClick={() => {
-              setSearch(result.item.name);
-              handleKeyDown({ key: "Enter" });
-            }}
+            onClick={() => handleKeyDown({ key: "Enter" }, result.item.name)}
           >
             <img
               src={`https://ddragon.leagueoflegends.com/cdn/14.23.1/img/champion/${result.item.id}.png`}
