@@ -4,7 +4,6 @@ import { useChampion } from "../contexts/ChampionsContext";
 import PixelatedImage from "../components/Game1/PixelatedImage";
 import { isCorrectAnswer } from "../utils/gameLogic";
 import { Check } from "lucide-react";
-import { Link } from "react-router-dom";
 
 export default function Game1Infinite() {
   const { championList, setChampionList } = useChampion();
@@ -23,21 +22,24 @@ export default function Game1Infinite() {
   const handleKeyDown = (event) => {
     if (event.key === "Enter") {
       if (isCorrectAnswer(championList, chosenChampion, search)) {
-        // Retire le champion trouvé de la liste
+        setIsImageClear(true); // Rendre l'image actuelle nette
+
         const updatedList = championList.filter(
           (champion) => champion.name !== championList[chosenChampion].name
         );
-        setChampionList(updatedList);
 
-        // Choisit un nouveau champion s'il en reste
-        if (updatedList.length > 0) {
-          setChosenChampion(Math.floor(Math.random() * updatedList.length));
-        } else {
-          console.log("Bravo ! Vous avez trouvé tous les champions.");
-        }
-        setSearch(""); // Réinitialise la barre de recherche
+        // Gérer le délai avant de changer le champion
+        setTimeout(() => {
+          setChampionList(updatedList); // Mettre à jour la liste après le délai
+          setIsImageClear(false); // Revenir au flou
+          if (updatedList.length > 0) {
+            setChosenChampion(Math.floor(Math.random() * updatedList.length)); // Changer de champion
+          }
+        }, 2000); // 2 secondes pour montrer l'image nette
+
+        setSearch(""); // Réinitialiser la barre de recherche
       } else {
-        setSearch(""); // Réinitialise le champ en cas de mauvaise réponse
+        setSearch(""); // Réinitialiser en cas de mauvaise réponse
       }
     }
   };
@@ -45,7 +47,7 @@ export default function Game1Infinite() {
   if (!championList) return null; // Si la liste n'est pas encore chargée
   if (championList.length === 0)
     return (
-      <div className="flex items-center mt-4 flex-col w-screen max-w-[1000px] max-[500px]:w-[280px] m-auto">
+      <div className="flex items-center mt-4 flex-col w-screen max-w-[1000px] max-[500px]:max-w-[280px] m-auto">
         <Check size={128} className="text-accent mt-10" />
         <p className="text-subtitle dark:text-dark-title font-bold text-lg text-center">
           Bravo !
@@ -72,13 +74,15 @@ export default function Game1Infinite() {
   const searchResults = search ? fuse.search(search, { limit: 10 }) : [];
 
   return (
-    <div className="flex items-center mt-4 flex-col w-screen max-w-[1000px] max-[500px]:w-[300px] m-auto">
+    <div className="flex items-center mt-4 flex-col w-screen max-w-[1000px] m-auto max-[500px]:mx-2">
       {/* Image du champion pixelisée */}
       {championList[chosenChampion] && (
         <PixelatedImage
           src={`https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${championList[chosenChampion].id}_0.jpg`}
           length={championList.length}
           pixel={150}
+          width={((169 - championList.length) / 169) * 100}
+          isImageClear={isImageClear}
         />
       )}
 
@@ -92,13 +96,16 @@ export default function Game1Infinite() {
         onKeyDown={handleKeyDown}
       />
 
-      {/* Suggestions basées sur Fuse.js */}
+      {/* Suggestions Fuse.js */}
       {searchResults.map((result) => (
         <div key={result.item.id} className="text-dark-title py-1 w-full">
           <button
             className="flex items-center space-x-2 bg-secondary dark:bg-dark-secondary2 w-full rounded-r-2xl border border-secondary dark:border-dark-secondary2 hover:border-accent dark:hover:border-accent hover:bg-secondary-accent dark:hover:bg-dark-secondary transition-colors"
             type="button"
-            onClick={() => setSearch(result.item.name)} // Remplit la barre avec le nom sélectionné
+            onClick={() => {
+              setSearch(result.item.name);
+              handleKeyDown({ key: "Enter" });
+            }}
           >
             <img
               src={`https://ddragon.leagueoflegends.com/cdn/14.23.1/img/champion/${result.item.id}.png`}

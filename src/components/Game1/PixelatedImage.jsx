@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 
-const PixelatedImage = ({ src, width = 100, length, pixel }) => {
+const PixelatedImage = ({ src, width = 100, length, pixel, isImageClear }) => {
   const canvasRef = useRef(null);
   const imgRef = useRef(new Image());
   const [pixelSize, setPixelSize] = useState(pixel);
@@ -45,8 +45,12 @@ const PixelatedImage = ({ src, width = 100, length, pixel }) => {
   }, [src, pixelSize]);
 
   useEffect(() => {
-    setPixelSize(pixel);
-  }, [src, pixel]);
+    if (isImageClear) {
+      setPixelSize(1);
+    } else {
+      setPixelSize(pixel);
+    }
+  }, [src, pixel, isImageClear]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -57,18 +61,26 @@ const PixelatedImage = ({ src, width = 100, length, pixel }) => {
   }, [src]);
 
   return (
-    <div>
-      <div className="w-full bg-secondary-accent dark:bg-dark-secondary2 h-20 rounded-tr-[50px]">
+    <div
+      className={`ring-2 ${
+        isImageClear ? "ring-green-500" : "ring-primary dark:ring-dark-primary"
+      } rounded-[50px] rounded-tl-none overflow-hidden transition-colors`}
+    >
+      <div className="w-full bg-secondary-accent dark:bg-dark-secondary2 h-20">
         <div
-          className="bg-accent h-20 flex items-center rounded-tr-[50px]"
+          className={`${
+            isImageClear ? "bg-green-500" : "bg-accent"
+          } h-20 flex items-center`}
           style={{ width: `${width}%` }}
         >
-          <p className="text-3xl font-bold text-black dark:text-dark-title m-10">
-            {length} {length === 1 ? "restant" : "restants"}
+          <p className="text-3xl font-bold text-black dark:text-dark-title m-10 fixed">
+            {isImageClear
+              ? "Bonne réponse!"
+              : `${length} ${length === 1 ? "restant" : "restants"}`}
           </p>
         </div>
       </div>
-      <canvas ref={canvasRef} className="rounded-b-[50px] w-full" />
+      <canvas ref={canvasRef} className="w-full" />
     </div>
   );
 };
