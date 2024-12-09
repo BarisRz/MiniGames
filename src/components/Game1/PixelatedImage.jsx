@@ -45,7 +45,7 @@ const PixelatedImage = ({ src, width = 100, length, pixel }) => {
   }, [src, pixelSize]);
 
   useEffect(() => {
-    setPixelSize(pixel); // Reset pixel size when src changes
+    setPixelSize(pixel);
   }, [src, pixel]);
 
   useEffect(() => {
