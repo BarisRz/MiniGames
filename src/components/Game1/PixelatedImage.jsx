@@ -64,16 +64,16 @@ const PixelatedImage = ({ src, width = 100, length, pixel, isImageClear }) => {
     <div
       className={`ring-2 ${
         isImageClear ? "ring-green-500" : "ring-primary dark:ring-dark-primary"
-      } rounded-[50px] rounded-tl-none overflow-hidden transition-colors`}
+      } rounded-[50px] rounded-tl-none overflow-hidden transition-colors max-[500px]:rounded-none`}
     >
-      <div className="w-full bg-secondary-accent dark:bg-dark-secondary2 h-20">
+      <div className="w-full bg-secondary-accent dark:bg-dark-secondary2 h-20 max-[500px]:h-12">
         <div
           className={`${
             isImageClear ? "bg-green-500" : "bg-accent"
-          } h-20 flex items-center`}
+          } h-20 flex items-center max-[500px]:h-12`}
           style={{ width: `${width}%` }}
         >
-          <p className="text-3xl font-bold text-black dark:text-dark-title m-10 fixed">
+          <p className="text-3xl font-bold text-black dark:text-dark-title m-10 fixed max-[500px]:text-xl max-[500px]:m-4">
             {isImageClear
               ? "Bonne réponse!"
               : `${length} ${length === 1 ? "restant" : "restants"}`}

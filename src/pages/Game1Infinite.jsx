@@ -77,7 +77,7 @@ export default function Game1Infinite() {
   const searchResults = search ? fuse.search(search, { limit: 10 }) : [];
 
   return (
-    <div className="flex items-center mt-4 flex-col w-screen max-w-[1000px] m-auto max-[500px]:mx-2">
+    <div className="flex items-center mt-4 flex-col w-screen max-w-[1000px] m-auto">
       {/* Image du champion pixelisée */}
       {championList[chosenChampion] && (
         <PixelatedImage
@@ -92,18 +92,19 @@ export default function Game1Infinite() {
       {/* Barre de recherche */}
       <input
         type="search"
-        className="w-full mb-2 bg-secondary-accent h-20 rounded-3xl text-title dark:text-dark-title dark:bg-dark-secondary2 px-8 dark:placeholder-dark-subtitle/50 placeholder-subtitle/70 focus:outline-none focus:ring-2 focus:ring-accent transition-colors text-xl placeholder:text-base mt-8"
+        className="w-full mb-2 bg-secondary-accent h-20 rounded-3xl text-title dark:text-dark-title dark:bg-dark-secondary2 px-8 dark:placeholder-dark-subtitle/50 placeholder-subtitle/70 focus:outline-none focus:ring-2 focus:ring-accent transition-colors text-xl placeholder:text-base mt-8 max-[500px]:rounded-none max-[500px]:h-14"
         placeholder="Quel est ce champion ?"
         value={search}
         onChange={(e) => setSearch(e.target.value)}
         onKeyDown={handleKeyDown}
+        maxLength={20}
       />
 
       {/* Suggestions Fuse.js */}
       {searchResults.map((result) => (
         <div key={result.item.id} className="text-dark-title py-1 w-full">
           <button
-            className="flex items-center space-x-2 bg-secondary dark:bg-dark-secondary2 w-full rounded-r-2xl border border-secondary dark:border-dark-secondary2 hover:border-accent dark:hover:border-accent hover:bg-secondary-accent dark:hover:bg-dark-secondary transition-colors"
+            className="flex items-center space-x-2 bg-secondary dark:bg-dark-secondary2 w-full rounded-r-2xl border border-secondary dark:border-dark-secondary2 hover:border-accent dark:hover:border-accent hover:bg-secondary-accent dark:hover:bg-dark-secondary transition-colors max-[500px]:rounded-none"
             type="button"
             onClick={() => handleKeyDown({ key: "Enter" }, result.item.name)}
           >
