@@ -5,12 +5,13 @@ import { ChampionsProvider } from "./contexts/ChampionsContext.jsx";
 import App from "./pages/App.jsx";
 import Home from "./pages/Home.jsx";
 import Game1Infinite from "./pages/Game1Infinite.jsx";
+import ErrorPage from "./pages/ErrorPage.jsx";
 import "./index.scss";
 
 const router = createBrowserRouter([
   {
     element: <App />,
-    errorElement: <div>Not Found</div>,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
