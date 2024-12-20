@@ -15,7 +15,7 @@ function GameCard({
   const [modal, setModal] = useState(false);
   return (
     <div
-      className="h-24 rounded-xl flex items-center bg-right bg-no-repeat"
+      className="h-24 rounded-xl flex items-center bg-right bg-no-repeat cursor-pointer"
       style={{
         backgroundImage: `url(${src})`,
         backgroundPosition: `${imagePosition}`,
@@ -29,7 +29,7 @@ function GameCard({
       </div>
       {modal && (
         <div
-          className="modal-choix-game fixed inset-0 w-screen bg-black/50 backdrop-blur-sm top-0 left-0 right-0 bottom-0 z-50 box-border overflow-hidden flex flex-col space-y-2 items-center justify-center text-white"
+          className="modal-choix-game fixed cursor-default inset-0 w-screen bg-black/50 backdrop-blur-sm top-0 left-0 right-0 bottom-0 z-50 box-border overflow-hidden flex flex-col space-y-2 items-center justify-center text-white"
           onClick={() => setModal(!modal)}
         >
           <Link className="game1-selection-btn" to={link1}>
