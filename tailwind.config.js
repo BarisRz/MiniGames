@@ -21,6 +21,9 @@ export default {
         Inter: ["Inter", "sans-serif"],
         Montserrat: ["Montserrat", "sans-serif"],
       },
+      height: {
+        screen: "calc(100vh - 64px)",
+      },
     },
   },
   plugins: [],

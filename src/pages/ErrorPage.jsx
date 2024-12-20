@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export default function ErrorPage() {
   return (
-    <div className="bg-primary dark:bg-dark-primary flex justify-center items-center h-screen">
+    <div className="bg-primary dark:bg-dark-primary flex justify-center items-center h-full">
       <div className="flex flex-col items-center">
         <Ban size={128} className="text-title mb-2 dark:text-dark-title" />
         <h1 className="text-3xl text-title dark:text-dark-title max-[500px]:text-xl ">

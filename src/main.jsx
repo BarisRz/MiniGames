@@ -11,7 +11,6 @@ import "./index.scss";
 const router = createBrowserRouter([
   {
     element: <App />,
-    errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
@@ -20,6 +19,10 @@ const router = createBrowserRouter([
       {
         path: "/game1/infinite",
         element: <Game1Infinite />,
+      },
+      {
+        path: "*",
+        element: <ErrorPage />,
       },
     ],
   },
